@@ -12,7 +12,7 @@ namespace MyCompanyName.MyProjectName.EntityFrameworkCore
             var configuration = BuildConfiguration();
 
             var builder = new DbContextOptionsBuilder<IdentityServerHostMigrationsDbContext>()
-                .UseSqlServer(configuration.GetConnectionString("Default"));
+                .UseMySql(configuration.GetConnectionString("Default"));
 
             return new IdentityServerHostMigrationsDbContext(builder.Options);
         }

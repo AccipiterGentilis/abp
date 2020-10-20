@@ -17,7 +17,6 @@ using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.Autofac;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
-using Volo.Abp.EntityFrameworkCore.SqlServer;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
 using Volo.Abp.Identity;
@@ -35,6 +34,7 @@ using Volo.Abp.TenantManagement.EntityFrameworkCore;
 using Volo.Abp.TenantManagement.Web;
 using Volo.Abp.Threading;
 using Volo.Abp.VirtualFileSystem;
+using Volo.Abp.EntityFrameworkCore.MySQL;
 
 namespace MyCompanyName.MyProjectName
 {
@@ -46,7 +46,7 @@ namespace MyCompanyName.MyProjectName
         typeof(AbpAutofacModule),
         typeof(AbpAccountWebModule),
         typeof(AbpAccountApplicationModule),
-        typeof(AbpEntityFrameworkCoreSqlServerModule),
+        typeof(AbpEntityFrameworkCoreMySQLModule),
         typeof(AbpSettingManagementEntityFrameworkCoreModule),
         typeof(AbpPermissionManagementEntityFrameworkCoreModule),
         typeof(AbpPermissionManagementApplicationModule),
@@ -72,7 +72,7 @@ namespace MyCompanyName.MyProjectName
 
             Configure<AbpDbContextOptions>(options =>
             {
-                options.UseSqlServer();
+                options.UseMySQL();
             });
 
             if (hostingEnvironment.IsDevelopment())

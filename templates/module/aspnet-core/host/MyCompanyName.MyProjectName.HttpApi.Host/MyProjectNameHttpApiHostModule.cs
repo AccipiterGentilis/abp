@@ -25,7 +25,6 @@ using Volo.Abp.Autofac;
 using Volo.Abp.Caching;
 using Volo.Abp.Caching.StackExchangeRedis;
 using Volo.Abp.EntityFrameworkCore;
-using Volo.Abp.EntityFrameworkCore.SqlServer;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.MultiTenancy;
@@ -33,6 +32,7 @@ using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.Security.Claims;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.VirtualFileSystem;
+using Volo.Abp.EntityFrameworkCore.MySQL;
 
 namespace MyCompanyName.MyProjectName
 {
@@ -43,7 +43,7 @@ namespace MyCompanyName.MyProjectName
         typeof(AbpAspNetCoreMvcUiMultiTenancyModule),
         typeof(AbpAutofacModule),
         typeof(AbpCachingStackExchangeRedisModule),
-        typeof(AbpEntityFrameworkCoreSqlServerModule),
+        typeof(AbpEntityFrameworkCoreMySQLModule),
         typeof(AbpAuditLoggingEntityFrameworkCoreModule),
         typeof(AbpPermissionManagementEntityFrameworkCoreModule),
         typeof(AbpSettingManagementEntityFrameworkCoreModule),
@@ -60,7 +60,7 @@ namespace MyCompanyName.MyProjectName
 
             Configure<AbpDbContextOptions>(options =>
             {
-                options.UseSqlServer();
+                options.UseMySQL();
             });
 
             Configure<AbpMultiTenancyOptions>(options =>

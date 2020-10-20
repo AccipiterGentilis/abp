@@ -1,15 +1,14 @@
-using System;
-using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using MyCompanyName.MyProjectName.MultiTenancy;
 using StackExchange.Redis;
-using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.Swagger;
+using System;
+using System.Linq;
 using Volo.Abp;
 using Volo.Abp.Account;
 using Volo.Abp.Account.Web;
@@ -26,7 +25,7 @@ using Volo.Abp.Caching;
 using Volo.Abp.Caching.StackExchangeRedis;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
-using Volo.Abp.EntityFrameworkCore.SqlServer;
+using Volo.Abp.EntityFrameworkCore.MySQL;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
 using Volo.Abp.Identity;
@@ -56,7 +55,7 @@ namespace MyCompanyName.MyProjectName
         typeof(AbpAuditLoggingEntityFrameworkCoreModule),
         typeof(AbpAutofacModule),
         typeof(AbpCachingStackExchangeRedisModule),
-        typeof(AbpEntityFrameworkCoreSqlServerModule),
+        typeof(AbpEntityFrameworkCoreMySQLModule),
         typeof(AbpIdentityEntityFrameworkCoreModule),
         typeof(AbpIdentityApplicationModule),
         typeof(AbpIdentityHttpApiModule),
@@ -87,7 +86,7 @@ namespace MyCompanyName.MyProjectName
 
             Configure<AbpDbContextOptions>(options =>
             {
-                options.UseSqlServer();
+                options.UseMySQL();
             });
 
             context.Services.AddSwaggerGen(
