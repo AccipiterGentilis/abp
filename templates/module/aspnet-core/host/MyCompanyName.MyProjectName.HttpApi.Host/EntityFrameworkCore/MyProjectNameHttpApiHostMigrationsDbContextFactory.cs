@@ -12,7 +12,7 @@ namespace MyCompanyName.MyProjectName.EntityFrameworkCore
             var configuration = BuildConfiguration();
 
             var builder = new DbContextOptionsBuilder<MyProjectNameHttpApiHostMigrationsDbContext>()
-                .UseSqlServer(configuration.GetConnectionString("MyProjectName"));
+                .UseSqlite(configuration.GetConnectionString("MyProjectName"));
 
             return new MyProjectNameHttpApiHostMigrationsDbContext(builder.Options);
         }
