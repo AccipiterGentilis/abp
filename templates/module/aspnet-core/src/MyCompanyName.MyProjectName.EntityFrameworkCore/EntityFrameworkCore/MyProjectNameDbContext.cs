@@ -11,7 +11,9 @@ namespace MyCompanyName.MyProjectName.EntityFrameworkCore
          * public DbSet<Question> Questions { get; set; }
          */
 
-        public MyProjectNameDbContext(DbContextOptions<MyProjectNameDbContext> options) 
+        public DbSet<Person> People { get; set; }
+
+        public MyProjectNameDbContext(DbContextOptions<MyProjectNameDbContext> options)
             : base(options)
         {
 

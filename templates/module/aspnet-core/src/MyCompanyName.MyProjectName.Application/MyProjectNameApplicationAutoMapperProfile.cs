@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MyCompanyName.MyProjectName.Samples;
 
 namespace MyCompanyName.MyProjectName
 {
@@ -9,6 +10,8 @@ namespace MyCompanyName.MyProjectName
             /* You can configure your AutoMapper mapping configuration here.
              * Alternatively, you can split your mapping configurations
              * into multiple profile classes for a better organization. */
+            CreateMap<Person, PersonDto>();
+            CreateMap<CreateUpdatePersonDto, Person>();
         }
     }
 }

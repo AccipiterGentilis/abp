@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
+using Volo.Abp.EntityFrameworkCore.Modeling;
 
 namespace MyCompanyName.MyProjectName.EntityFrameworkCore
 {
@@ -38,6 +39,19 @@ namespace MyCompanyName.MyProjectName.EntityFrameworkCore
                 b.HasIndex(q => q.CreationTime);
             });
             */
+
+            builder.Entity<Person>(b =>
+            {
+                b.ToTable("People");
+
+                //Configure the base properties
+                b.ConfigureByConvention();
+
+                //Configure other properties (if you are using the fluent API)
+                b.Property(x => x.Name).IsRequired().HasMaxLength(128);
+
+                b.Property(x => x.Age).IsRequired();
+            });
         }
     }
 }
